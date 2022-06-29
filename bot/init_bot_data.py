@@ -1,5 +1,6 @@
 import csv
 import datetime
+import paths
 
 class BotInit:
     def __init__(self) -> None:
@@ -16,12 +17,12 @@ class BotInit:
         self.upload_access_users()
 
     def upload_token(self):
-        file = open('../data/API_TOKEN.txt')
+        file = open(paths.path_data + '/API_TOKEN.txt')
         self.token = file.readline()        
 
     def upload_chat_ids(self):
     #IDs users
-        with open('../data/chat_id.txt', 'r') as file:
+        with open(paths.path_data + '/chat_id.txt', 'r') as file:
             lines = file.readlines()
             for line in lines:
                 id = line.strip()
@@ -32,7 +33,7 @@ class BotInit:
     def upload_admins_ids(self):
         #IDs admins
         
-        with open('../data/admins_id.txt', 'r') as file:
+        with open(paths.path_data + '/admins_id.txt', 'r') as file:
             lines = file.readlines()
             for line in lines:
                 id = line.strip()
@@ -40,7 +41,7 @@ class BotInit:
                     self.admins.append(int(id))
 
     def upload_access_users(self):
-        with open('../data/users.csv', 'r') as file:
+        with open(paths.path_data + '/users.csv', 'r') as file:
             reader = csv.DictReader(file, delimiter='\t')
             for row in reader:
                 user = {}
