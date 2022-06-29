@@ -1,7 +1,7 @@
 from aiogram import types, Dispatcher
 from keyboards import keyboard_client
 from keyboards import keyboard_admin
-from create_bot import dp, bot
+from bot.create_bot import dp, bot
 
 #Клиентская часть
 #**************************************** Обработка сообщений от пользователя ****************************************

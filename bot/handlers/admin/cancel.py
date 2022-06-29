@@ -1,6 +1,6 @@
 from aiogram.dispatcher import FSMContext
 from aiogram import types
-from create_bot import bot
+from bot.create_bot import bot
 
 async def cancel_handler(callback_query: types.CallbackQuery, state: FSMContext):
     current_state = await state.get_state()

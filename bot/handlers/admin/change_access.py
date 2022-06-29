@@ -2,7 +2,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram import types
 from keyboards import keyboard_admin
-from create_bot import bot
+from bot.create_bot import bot
 
 class FSMAdmin_AccessUsers(StatesGroup):
     username = State()

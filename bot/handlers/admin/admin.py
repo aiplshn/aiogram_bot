@@ -1,10 +1,10 @@
 from aiogram import Dispatcher
 from aiogram.dispatcher.filters import Text
-from handlers.admin.change_access import *
-from handlers.admin.change_access_add_week import *
-from handlers.admin.change_access_add_month import *
-from handlers.admin.show_validity import *
-from handlers.admin.cancel import *
+from bot.handlers.admin.change_access import *
+from bot.handlers.admin.change_access_add_week import *
+from bot.handlers.admin.change_access_add_month import *
+from bot.handlers.admin.show_validity import *
+from bot.handlers.admin.cancel import *
 
 def register_handler_admin(dp: Dispatcher):
     dp.register_callback_query_handler(start_admin_edit_access, lambda c: c.data == 'edit_access', state=None)
