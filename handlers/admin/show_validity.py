@@ -1,14 +1,17 @@
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram import types
-    
+from keyboards import keyboard_admin
+from create_bot import bot
+
 class FSMAdmin_ShowValidity(StatesGroup):
     username = State()
 
 #Начало диалога показа прав. Для админа
-async def start_admin_show_validity(message: types.Message):
+async def start_admin_show_validity(callback_query: types.CallbackQuery):
     await FSMAdmin_ShowValidity.username.set()
-    await message.reply('Введите UserName')
+    await bot.answer_callback_query(callback_query.id)
+    await bot.send_message(callback_query.from_user.id, 'Введите UserName', reply_markup=keyboard_admin.kb_admins_cancel)
 
 #Ввод UserName
 async def load_username_show_validity(message: types.Message, state: FSMContext):

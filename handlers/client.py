@@ -1,13 +1,13 @@
 from aiogram import types, Dispatcher
 from keyboards import keyboard_client
+from keyboards import keyboard_admin
 from create_bot import dp, bot
 
 #Клиентская часть
 #**************************************** Обработка сообщений от пользователя ****************************************
 async def command_start(message: types.message):
-    await message.answer('СТАРТ')
-
-
+    #if admin:
+    await message.answer('СТАРТ', reply_markup=keyboard_admin.kb_admins)
 
 #**************************************** Обработка события нажатия на inline кнопку  ****************************************
 
