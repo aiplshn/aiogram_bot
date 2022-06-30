@@ -3,6 +3,8 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram import types
 from bot.keyboards import keyboard_admin
 from bot.create_bot import bot, BOT_DATA
+from bot.create_bot import BOT_CONTROLLER
+import datetime
 
 class FSMAdmin_AccessUsers(StatesGroup):
     username = State()
@@ -29,7 +31,16 @@ async def load_validity(message: types.Message, state: FSMContext):
     #save date
     async with state.proxy() as data:
         data['date'] = message.text
-    await FSMAdmin_AccessUsers.next()
-    # обработка 
-    await state.finish()
-    await message.reply('Готово')
+    # await FSMAdmin_AccessUsers.next()
+    # обработка
+    async with state.proxy() as data:
+        try:
+            dt = datetime.datetime.strptime(data['date'], '%d.%m.%Y %H:%M')
+            if BOT_CONTROLLER.changeAccessUser(dt, data['username']):
+                bot.send_message(message.chat.id, 'Готово')
+                await state.finish()
+        except Exception as e:
+            await message.reply('Не удалось, повторите попытку', reply_markup=keyboard_admin.kb_admins_cancel)
+            return
+        # BOT_CONTROLLER.changeAccessUser()
+    # await message.reply('Готово')
