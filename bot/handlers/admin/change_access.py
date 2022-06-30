@@ -24,7 +24,7 @@ async def load_username(message: types.Message, state: FSMContext):
     async with state.proxy() as data: #state.proxy - словарь хранения инфы. 
         data['username'] = message.text
     await FSMAdmin_AccessUsers.next()
-    await message.reply('Введите срок действия', reply_markup=keyboard_admin.kb_admins_cancel)
+    await message.reply('Введите срок действия в формате dd.mm.YYYY HH:MM', reply_markup=keyboard_admin.kb_admins_cancel)
 
 #Ввод даты
 async def load_validity(message: types.Message, state: FSMContext):
@@ -37,7 +37,7 @@ async def load_validity(message: types.Message, state: FSMContext):
         try:
             dt = datetime.datetime.strptime(data['date'], '%d.%m.%Y %H:%M')
             if BOT_CONTROLLER.changeAccessUser(dt, data['username']):
-                bot.send_message(message.chat.id, 'Готово')
+                await message.reply('Готово')
                 await state.finish()
         except Exception as e:
             await message.reply('Не удалось, повторите попытку', reply_markup=keyboard_admin.kb_admins_cancel)

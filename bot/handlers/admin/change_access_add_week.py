@@ -2,7 +2,8 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram import types
 from bot.keyboards import keyboard_admin
-from bot.create_bot import bot, BOT_DATA
+from bot.create_bot import bot, BOT_DATA, BOT_CONTROLLER
+import datetime
 
 class FSMAdmin_AccessUserAddWeek(StatesGroup):
     username = State()
@@ -21,5 +22,13 @@ async def load_username_add_week(message: types.Message, state: FSMContext):
     #save username
     async with state.proxy() as data: #state.proxy - словарь хранения инфы. 
         data['username'] = message.text
-    await state.finish()
-    await message.reply('Готово')
+        now = datetime.datetime.now()
+        delta = datetime.timedelta(weeks=1)
+        res = now + delta
+        if BOT_CONTROLLER.changeAccessUser(res, data['username']):
+            await state.finish()
+            await message.reply('Готово')
+        else:
+            await message.reply('Не удалось, повторите попытку', reply_markup=keyboard_admin.kb_admins_cancel)
+
+        

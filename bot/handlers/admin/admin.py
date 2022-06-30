@@ -15,7 +15,7 @@ def register_handler_admin(dp: Dispatcher):
     dp.register_message_handler(load_username_add_week, state=FSMAdmin_AccessUserAddWeek.username)
 
     dp.register_callback_query_handler(start_admin_edit_access_add_month, lambda c: c.data == 'edit_access_add_month', state=None)
-    dp.register_message_handler(load_username_add_week, state=FSMAdmin_AccessUserAddMonth.username)
+    dp.register_message_handler(load_username_add_month, state=FSMAdmin_AccessUserAddMonth.username)
 
     dp.register_callback_query_handler(start_admin_show_validity, lambda c: c.data == 'show_validity', state=None)
     dp.register_message_handler(load_username_show_validity, state=FSMAdmin_ShowValidity.username)

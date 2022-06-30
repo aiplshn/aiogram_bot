@@ -20,10 +20,10 @@ async def load_username_show_validity(message: types.Message, state: FSMContext)
     #save username
     async with state.proxy() as data: #state.proxy - словарь хранения инфы. 
         data['username'] = message.text
-    dt, fl = BOT_CONTROLLER.getDateFromUsername(data['username'])
-    if(fl):
-        dt_str = dt.strftime('%d.%m.%Y %H:%M')
-        await message.reply(dt_str)
-        await state.finish()
-    else:
-        await message.reply('Не удалось, повторите попытку', reply_markup=keyboard_admin.kb_admins_cancel)
+        dt, fl = BOT_CONTROLLER.getDateFromUsername(data['username'])
+        if(fl):
+            dt_str = dt.strftime('%d.%m.%Y %H:%M')
+            await message.reply(dt_str)
+            await state.finish()
+        else:
+            await message.reply('Не удалось, повторите попытку', reply_markup=keyboard_admin.kb_admins_cancel)
