@@ -1,3 +1,4 @@
+#TODO include mongo DB and insert this
 #Структура для поиска связок
 class DataToParce:
     def __init__(self) -> None:
