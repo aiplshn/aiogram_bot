@@ -1,8 +1,9 @@
 from aiogram.utils import executor
 from bot.create_bot import dp, BOT_DATA
-from bot.handlers import admin, client, other
+from bot.handlers import admin, other
 from aiogram.types import InlineKeyboardButton
 from bot.handlers.admin import admin
+from bot.handlers.clients import client
 
 async def on_startup(_):
     print("BOT IS STARTED")
