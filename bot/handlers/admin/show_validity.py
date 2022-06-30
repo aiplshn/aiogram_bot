@@ -2,7 +2,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram import types
 from bot.keyboards import keyboard_admin
-from bot.create_bot import bot, BOT_DATA
+from bot.create_bot import bot, BOT_DATA, BOT_CONTROLLER
 
 class FSMAdmin_ShowValidity(StatesGroup):
     username = State()
@@ -20,5 +20,10 @@ async def load_username_show_validity(message: types.Message, state: FSMContext)
     #save username
     async with state.proxy() as data: #state.proxy - словарь хранения инфы. 
         data['username'] = message.text
-    await state.finish()
-    await message.reply('Готово')
+    dt, fl = BOT_CONTROLLER.getDateFromUsername(data['username'])
+    if(fl):
+        dt_str = dt.strftime('%d.%m.%Y %H:%M')
+        await message.reply(dt_str)
+        await state.finish()
+    else:
+        await message.reply('Не удалось, повторите попытку', reply_markup=keyboard_admin.kb_admins_cancel)
