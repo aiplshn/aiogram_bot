@@ -1,4 +1,5 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from bot.keyboards.keyboard_other import *
 #Button for all users
 #Выбор фиата
 button_usd = InlineKeyboardButton('USD', callback_data='set_usd')
@@ -11,8 +12,6 @@ button_tinkoff = InlineKeyboardButton('Тинькофф', callback_data='set_tin
 button_qiwi = InlineKeyboardButton('QIWI', callback_data='set_qiwi')
 button_yandex_money = InlineKeyboardButton('ЮMoney', callback_data='set_yandex_money')
 button_sber = InlineKeyboardButton('Сбербанк', callback_data='set_sber')
-#Отмена
-button_cancel = InlineKeyboardButton('Отмена', callback_data='cancel')
 
 #Keyboard set fiat
 kb_fiat = InlineKeyboardMarkup(resize_keyboard=True)

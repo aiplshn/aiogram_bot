@@ -1,6 +1,4 @@
 from aiogram import Dispatcher
-from bot.create_bot import dp, bot, BOT_DATA
-
 from bot.handlers.clients.set_bypass_tp1 import *
 from bot.handlers.clients.set_bank_name import *
 from bot.handlers.clients.set_fiat import *

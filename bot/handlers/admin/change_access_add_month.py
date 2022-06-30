@@ -1,7 +1,7 @@
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram import types
-from bot.keyboards import keyboard_admin
+from bot.keyboards.keyboard_other import kb_cancel
 from bot.create_bot import bot, BOT_DATA, BOT_CONTROLLER
 import datetime
 
@@ -14,7 +14,7 @@ async def start_admin_edit_access_add_month(callback_query: types.CallbackQuery)
         return
     await FSMAdmin_AccessUserAddMonth.username.set()
     await bot.answer_callback_query(callback_query.id)
-    await bot.send_message(callback_query.from_user.id, 'Введите UserName', reply_markup=keyboard_admin.kb_admins_cancel)
+    await bot.send_message(callback_query.from_user.id, 'Введите UserName', reply_markup=kb_cancel)
 
 #Ввод UserName
 async def load_username_add_month(message: types.Message, state: FSMContext):
@@ -28,4 +28,4 @@ async def load_username_add_month(message: types.Message, state: FSMContext):
             await state.finish()
             await message.reply('Готово')
         else:
-            await message.reply('Не удалось, повторите попытку', reply_markup=keyboard_admin.kb_admins_cancel)
+            await message.reply('Не удалось, повторите попытку', reply_markup=kb_cancel)
