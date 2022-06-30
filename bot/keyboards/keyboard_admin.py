@@ -1,4 +1,3 @@
-from ctypes import resize
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 #Button for admins
 #изменить срок действия вручную

@@ -1,6 +1,6 @@
 from aiogram import types, Dispatcher
 from bot.create_bot import dp, bot
-from keyboards import keyboard_client
+from bot.keyboards import keyboard_client
 
 #Общая часть
 async def echo_send(message: types.message):

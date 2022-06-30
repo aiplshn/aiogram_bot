@@ -1,7 +1,7 @@
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram import types
-from keyboards import keyboard_admin
+from bot.keyboards import keyboard_admin
 from bot.create_bot import bot, BOT_DATA
 
 class FSMAdmin_ShowValidity(StatesGroup):
