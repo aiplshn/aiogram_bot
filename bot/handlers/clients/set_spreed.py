@@ -11,7 +11,7 @@ class FSMClient_SetSpreed(StatesGroup):
 #Начало диалога ввода спреда
 async def start_client_set_spreed(message: types.Message):
     await FSMClient_SetSpreed.set_spreed.set()
-    await bot.send_message(message.from_user.id, "Введите спред", reply_markup=keyboard_client.kb_client_cancel)
+    await bot.send_message(message.from_user.id, "Введите спред, если установлен 0, то любой спред", reply_markup=keyboard_client.kb_client_cancel)
 
 #Ввод спреда
 async def client_input_spreed(message: types.Message, state: FSMContext):

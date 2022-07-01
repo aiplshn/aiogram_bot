@@ -1,4 +1,6 @@
 __pycache__
 data
+parse_best_change
 *.swp
 TODO
+*.xlsx
