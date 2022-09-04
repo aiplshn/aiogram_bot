@@ -16,7 +16,7 @@ async def start_client_set_spreed(message: types.Message):
 #Ввод спреда
 async def client_input_spreed(message: types.Message, state: FSMContext):
     try:
-        if (float)(message.text) > 0:
+        if (float)(message.text) >= 0:
             await message.reply('Готово ' + message.text)
             Parce_data.spreed = message.text
             await state.finish()
